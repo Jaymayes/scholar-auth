@@ -1,0 +1,186 @@
+{
+  "slug": "scholarships/id/accounting",
+  "title": "Idaho Accounting Scholarships 2025 | ScholarshipAI",
+  "state": "ID",
+  "stateName": "Idaho",
+  "major": "accounting",
+  "majorTitle": "Accounting",
+  "canonicalUrl": "https://scholarshipai.com/scholarships/id/accounting",
+  "noindex": false,
+  "metaDescription": "Find accounting scholarships in Idaho. AI-powered matching for students. 60ms response times, 96/100 security score.",
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Idaho Accounting Scholarships 2025",
+      "description": "Find accounting scholarships in Idaho",
+      "url": "https://scholarshipai.com/scholarships/id/accounting",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ScholarshipAI",
+        "url": "https://scholarshipai.com"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Scholarships",
+            "item": "https://scholarshipai.com/scholarships"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Idaho Scholarships",
+            "item": "https://scholarshipai.com/scholarships/id"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Accounting Scholarships",
+            "item": "https://scholarshipai.com/scholarships/id/accounting"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Idaho Accounting Scholarships",
+      "description": "Curated list of accounting scholarships for Idaho students",
+      "numberOfItems": "50+",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What accounting scholarships are available in Idaho?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Idaho offers numerous accounting scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply for accounting scholarships in Idaho?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create a free ScholarshipAI profile, and our AI will match you with relevant accounting scholarships in Idaho. Many applications can be completed directly through our platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GPA do I need for accounting scholarships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPA requirements vary by scholarship. Many accounting scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there accounting scholarships for community college students in Idaho?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many accounting scholarships in Idaho are available to community college students, including transfer scholarships and career-focused awards."
+          }
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What accounting scholarships are available in Idaho?",
+      "answer": "Idaho offers numerous accounting scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+    },
+    {
+      "question": "How do I apply for accounting scholarships in Idaho?",
+      "answer": "Create a free ScholarshipAI profile, and our AI will match you with relevant accounting scholarships in Idaho. Many applications can be completed directly through our platform."
+    },
+    {
+      "question": "What GPA do I need for accounting scholarships?",
+      "answer": "GPA requirements vary by scholarship. Many accounting scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+    },
+    {
+      "question": "Are there accounting scholarships for community college students in Idaho?",
+      "answer": "Yes! Many accounting scholarships in Idaho are available to community college students, including transfer scholarships and career-focused awards."
+    }
+  ],
+  "uniqueCopy": {
+    "headline": "Find Your Perfect Accounting Scholarship in Idaho",
+    "intro": "Discover top accounting scholarships available to students in Idaho. Our AI-powered platform matches you with relevant opportunities based on your academic profile, financial need, and career goals.",
+    "benefits": [
+      "Access exclusive accounting scholarships in Idaho",
+      "AI-powered matching with 94% accuracy rate",
+      "Streamlined application process with auto-fill",
+      "Real-time deadline tracking and reminders"
+    ],
+    "callToAction": "Start your scholarship search for accounting programs in Idaho today. Join 50,000+ students who have found funding through ScholarshipAI.",
+    "localInsights": "Idaho offers numerous opportunities for accounting students, including state-funded grants, university-specific awards, and private foundation scholarships. Many Idaho employers also sponsor students pursuing accounting degrees."
+  },
+  "internalLinks": [
+    {
+      "url": "/scholarships",
+      "text": "All Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/id",
+      "text": "Idaho Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/accounting",
+      "text": "Accounting Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/id/computer-science",
+      "text": "Idaho Computer Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/id/engineering",
+      "text": "Idaho Engineering Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/id/nursing",
+      "text": "Idaho Nursing Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/al/accounting",
+      "text": "Alabama Accounting Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ak/accounting",
+      "text": "Alaska Accounting Scholarships",
+      "rel": "related"
+    }
+  ],
+  "trustBadges": {
+    "performance": {
+      "score": 60,
+      "metric": "median response time (ms)"
+    },
+    "security": {
+      "score": 96,
+      "metric": "security audit score (/100)"
+    },
+    "accessibility": {
+      "score": 95.5,
+      "metric": "WCAG compliance (%)"
+    },
+    "responsibleAI": {
+      "score": 96,
+      "metric": "ethical AI score (/100)"
+    }
+  },
+  "pageType": "state-major",
+  "generatedAt": "2026-01-22T09:31:16.424Z"
+}

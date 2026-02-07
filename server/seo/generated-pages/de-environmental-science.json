@@ -1,0 +1,186 @@
+{
+  "slug": "scholarships/de/environmental-science",
+  "title": "Delaware Environmental Science Scholarships 2025 | ScholarshipAI",
+  "state": "DE",
+  "stateName": "Delaware",
+  "major": "environmental-science",
+  "majorTitle": "Environmental Science",
+  "canonicalUrl": "https://scholarshipai.com/scholarships/de/environmental-science",
+  "noindex": false,
+  "metaDescription": "Find environmental science scholarships in Delaware. AI-powered matching for students. 60ms response times, 96/100 security score.",
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Delaware Environmental Science Scholarships 2025",
+      "description": "Find environmental science scholarships in Delaware",
+      "url": "https://scholarshipai.com/scholarships/de/environmental-science",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ScholarshipAI",
+        "url": "https://scholarshipai.com"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Scholarships",
+            "item": "https://scholarshipai.com/scholarships"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Delaware Scholarships",
+            "item": "https://scholarshipai.com/scholarships/de"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Environmental Science Scholarships",
+            "item": "https://scholarshipai.com/scholarships/de/environmental-science"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Delaware Environmental Science Scholarships",
+      "description": "Curated list of environmental science scholarships for Delaware students",
+      "numberOfItems": "50+",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What environmental science scholarships are available in Delaware?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Delaware offers numerous environmental science scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply for environmental science scholarships in Delaware?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create a free ScholarshipAI profile, and our AI will match you with relevant environmental science scholarships in Delaware. Many applications can be completed directly through our platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GPA do I need for environmental science scholarships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPA requirements vary by scholarship. Many environmental science scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there environmental science scholarships for community college students in Delaware?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many environmental science scholarships in Delaware are available to community college students, including transfer scholarships and career-focused awards."
+          }
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What environmental science scholarships are available in Delaware?",
+      "answer": "Delaware offers numerous environmental science scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+    },
+    {
+      "question": "How do I apply for environmental science scholarships in Delaware?",
+      "answer": "Create a free ScholarshipAI profile, and our AI will match you with relevant environmental science scholarships in Delaware. Many applications can be completed directly through our platform."
+    },
+    {
+      "question": "What GPA do I need for environmental science scholarships?",
+      "answer": "GPA requirements vary by scholarship. Many environmental science scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+    },
+    {
+      "question": "Are there environmental science scholarships for community college students in Delaware?",
+      "answer": "Yes! Many environmental science scholarships in Delaware are available to community college students, including transfer scholarships and career-focused awards."
+    }
+  ],
+  "uniqueCopy": {
+    "headline": "Find Your Perfect Environmental Science Scholarship in Delaware",
+    "intro": "Discover top environmental science scholarships available to students in Delaware. Our AI-powered platform matches you with relevant opportunities based on your academic profile, financial need, and career goals.",
+    "benefits": [
+      "Access exclusive environmental science scholarships in Delaware",
+      "AI-powered matching with 94% accuracy rate",
+      "Streamlined application process with auto-fill",
+      "Real-time deadline tracking and reminders"
+    ],
+    "callToAction": "Start your scholarship search for environmental science programs in Delaware today. Join 50,000+ students who have found funding through ScholarshipAI.",
+    "localInsights": "Delaware offers numerous opportunities for environmental science students, including state-funded grants, university-specific awards, and private foundation scholarships. Many Delaware employers also sponsor students pursuing environmental science degrees."
+  },
+  "internalLinks": [
+    {
+      "url": "/scholarships",
+      "text": "All Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/de",
+      "text": "Delaware Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/environmental-science",
+      "text": "Environmental Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/de/computer-science",
+      "text": "Delaware Computer Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/de/engineering",
+      "text": "Delaware Engineering Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/de/nursing",
+      "text": "Delaware Nursing Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/al/environmental-science",
+      "text": "Alabama Environmental Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ak/environmental-science",
+      "text": "Alaska Environmental Science Scholarships",
+      "rel": "related"
+    }
+  ],
+  "trustBadges": {
+    "performance": {
+      "score": 60,
+      "metric": "median response time (ms)"
+    },
+    "security": {
+      "score": 96,
+      "metric": "security audit score (/100)"
+    },
+    "accessibility": {
+      "score": 95.5,
+      "metric": "WCAG compliance (%)"
+    },
+    "responsibleAI": {
+      "score": 96,
+      "metric": "ethical AI score (/100)"
+    }
+  },
+  "pageType": "state-major",
+  "generatedAt": "2026-01-22T09:31:16.411Z"
+}

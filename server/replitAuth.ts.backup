@@ -1,0 +1,338 @@
+import * as client from "openid-client";
+import { Strategy, type VerifyFunction } from "openid-client/passport";
+
+import passport from "passport";
+import session from "express-session";
+import type { Express, RequestHandler } from "express";
+import memoize from "memoizee";
+import connectPg from "connect-pg-simple";
+import { storage } from "./storage";
+import { authRateLimit, loginRateLimit } from "./middleware/rateLimiter";
+import { logger } from "./middleware/auditLogger";
+
+if (!process.env.REPLIT_DOMAINS) {
+  throw new Error("Environment variable REPLIT_DOMAINS not provided");
+}
+
+const getOidcConfig = memoize(
+  async () => {
+    // 🚀 EXECUTIVE RESILIENCE: Automatic failover from external to local OIDC
+    const externalIssuer = process.env.ISSUER_URL ?? "https://replit.com/oidc";
+    const localIssuer = "http://localhost:5000/api/auth/oauth";
+    
+    // Try external provider first
+    try {
+      console.log(`🔧 Auth Config: Attempting external OIDC issuer: ${externalIssuer}`);
+      return await client.discovery(
+        new URL(externalIssuer),
+        process.env.REPL_ID!
+      );
+    } catch (externalError) {
+      console.error(`⚠️ EXECUTIVE FAILOVER: External OIDC failed, falling back to local provider`, externalError);
+      
+      // EXECUTIVE FAILOVER: Switch to local OIDC provider
+      try {
+        console.log(`🔄 FAILOVER: Using local OIDC issuer: ${localIssuer}`);
+        
+        // Allow HTTP for local provider
+        const config = await client.discovery(
+          new URL(localIssuer),
+          process.env.REPL_ID!,
+          undefined,
+          { [client.allowInsecureRequests]: true }
+        );
+        
+        // Log failover for monitoring
+        console.log(`✅ EXECUTIVE FAILOVER SUCCESS: Local OIDC provider operational`);
+        
+        return config;
+      } catch (localError) {
+        console.error(`🚨 CRITICAL: Both external and local OIDC providers failed`, localError);
+        throw new Error(`OIDC failover failed: External error: ${externalError instanceof Error ? externalError.message : 'Unknown'}, Local error: ${localError instanceof Error ? localError.message : 'Unknown'}`);
+      }
+    }
+  },
+  { maxAge: 3600 * 1000 }
+);
+
+export function getSession() {
+  const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
+  const isProduction = process.env.NODE_ENV === 'production';
+  
+  const pgStore = connectPg(session);
+  const sessionStore = new pgStore({
+    conString: process.env.DATABASE_URL,
+    createTableIfMissing: false,
+    ttl: sessionTtl,
+    tableName: "sessions",
+  });
+  
+  return session({
+    secret: process.env.SESSION_SECRET!,
+    name: 'scholarshipai.session',
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+    rolling: false, // PERFORMANCE: Disable per-request DB writes - saves 10-40ms P95
+    cookie: {
+      httpOnly: true,
+      secure: isProduction, // HTTPS in production, HTTP in development
+      sameSite: isProduction ? 'none' : 'lax', // Cross-site cookies for production OAuth
+      domain: process.env.COOKIE_DOMAIN || (isProduction ? undefined : undefined), // Use COOKIE_DOMAIN in dev too for cross-domain testing
+      path: '/',
+      maxAge: sessionTtl,
+    },
+  });
+}
+
+function updateUserSession(
+  user: any,
+  tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers
+) {
+  // Preserve userId during token refresh
+  const existingUserId = user.userId;
+  user.claims = tokens.claims();
+  user.access_token = tokens.access_token;
+  user.refresh_token = tokens.refresh_token;
+  user.expires_at = user.claims?.exp;
+  if (existingUserId) {
+    user.userId = existingUserId;
+  }
+}
+
+async function upsertUser(
+  claims: any,
+) {
+  return await storage.upsertUser({
+    id: claims["sub"],
+    email: claims["email"],
+    firstName: claims["first_name"],
+    lastName: claims["last_name"],
+    profileImageUrl: claims["profile_image_url"],
+  });
+}
+
+export async function setupAuth(app: Express) {
+  // Trust proxy for correct client IP and protocol detection
+  app.set("trust proxy", process.env.TRUST_PROXY ? parseInt(process.env.TRUST_PROXY) : 1);
+  
+  // Apply session middleware
+  const sessionMiddleware = getSession();
+  app.use(sessionMiddleware);
+  
+  // Initialize Passport
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  const config = await getOidcConfig();
+
+  const verify: VerifyFunction = async (
+    tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers,
+    verified: passport.AuthenticateCallback
+  ) => {
+    const user = {} as any;
+    updateUserSession(user, tokens);
+    const dbUser = await upsertUser(tokens.claims());
+    user.userId = dbUser.id; // Store canonical database ID in session
+    verified(null, user);
+  };
+
+  const domains = process.env.REPLIT_DOMAINS!.split(",");
+  
+  // 🔧 EXECUTIVE FIX: Add localhost support for development
+  if (process.env.NODE_ENV === 'development') {
+    domains.push('localhost');
+  }
+  
+  // 🚨 CRITICAL FIX: Add all valid OAuth redirect domains
+  domains.push('scholar-auth-jamarrlmayes.replit.app'); // Primary production domain
+  
+  for (const domain of domains) {
+    const protocol = domain === 'localhost' ? 'http' : 'https';
+    const port = domain === 'localhost' ? ':5000' : '';
+    
+    const strategy = new Strategy(
+      {
+        name: `replitauth:${domain}`,
+        config,
+        scope: "openid email profile offline_access",
+        callbackURL: `${protocol}://${domain}${port}/api/callback`,
+      },
+      verify,
+    );
+    passport.use(strategy);
+  }
+
+  passport.serializeUser((user: Express.User, cb) => cb(null, user));
+  passport.deserializeUser((user: Express.User, cb) => cb(null, user));
+
+  app.get("/api/login", loginRateLimit, (req, res, next) => {
+    const startTime = Date.now();
+    
+    // Production hostname detection with X-Forwarded headers
+    const fullHost = req.get('X-Forwarded-Host') || req.get('Host') || req.hostname;
+    const hostname = fullHost.split(':')[0]; // Remove port for strategy matching
+    const strategy = `replitauth:${hostname}`;
+    
+    // Override res.redirect to capture metrics
+    const originalRedirect = res.redirect;
+    res.redirect = function(url: string) {
+      const responseTime = Date.now() - startTime;
+      const success = url.includes('/oidc/auth') || url.includes('replit.com/oidc'); // Successful redirect to OAuth
+      
+      // Record auth attempt for monitoring (async import)
+      import('./monitoring/authHealthDashboard').then(({ authHealthMonitor }) => {
+        authHealthMonitor.recordAuthAttempt(success, responseTime, hostname);
+      }).catch(err => console.warn('Failed to record auth metrics:', err));
+      
+      return originalRedirect.call(this, url);
+    };
+    
+    passport.authenticate(strategy, {
+      prompt: "login consent",
+      scope: ["openid", "email", "profile", "offline_access"],
+    })(req, res, next);
+  });
+
+  app.get("/api/callback", authRateLimit, (req, res, next) => {
+    const startTime = Date.now();
+    
+    // 🔧 EXECUTIVE FIX: Proper hostname detection with X-Forwarded headers
+    const fullHost = req.get('X-Forwarded-Host') || req.get('Host') || req.hostname;
+    const hostname = fullHost.split(':')[0]; // Remove port for strategy matching
+    const strategy = `replitauth:${hostname}`;
+    
+    passport.authenticate(strategy, {
+      failureRedirect: "/api/login",
+    })(req, res, (err?: any) => {
+      const responseTime = Date.now() - startTime;
+      
+      if (err) {
+        console.error('OAuth callback error:', err);
+        
+        // Record failed callback attempt
+        import('./monitoring/authHealthDashboard').then(({ authHealthMonitor }) => {
+          authHealthMonitor.recordAuthAttempt(false, responseTime, hostname);
+        }).catch(monitorErr => console.warn('Failed to record callback metrics:', monitorErr));
+        
+        return res.redirect('/api/login');
+      }
+      
+      // Record successful callback attempt  
+      import('./monitoring/authHealthDashboard').then(({ authHealthMonitor }) => {
+        authHealthMonitor.recordAuthAttempt(true, responseTime, hostname);
+      }).catch(monitorErr => console.warn('Failed to record callback metrics:', monitorErr));
+      
+      // Ensure session is saved before redirect
+      req.session.save((saveErr) => {
+        if (saveErr) {
+          console.error('Session save error:', saveErr);
+        }
+        
+        // Redirect to original URL or home
+        const returnTo = (req.session as any).returnTo || '/';
+        delete (req.session as any).returnTo;
+        res.redirect(returnTo);
+      });
+    });
+  });
+
+  app.get("/api/logout", (req, res) => {
+    req.logout(() => {
+      // 🔧 EXECUTIVE FIX: Proper URL construction with X-Forwarded headers
+      const protocol = req.get('X-Forwarded-Proto') || req.protocol;
+      const fullHost = req.get('X-Forwarded-Host') || req.get('Host') || req.hostname;
+      const hostname = fullHost.split(':')[0]; // Remove port for consistency
+      const port = fullHost.includes(':') ? fullHost.split(':')[1] : '';
+      const hostWithPort = port ? `${hostname}:${port}` : hostname;
+      
+      res.redirect(
+        client.buildEndSessionUrl(config, {
+          client_id: process.env.REPL_ID!,
+          post_logout_redirect_uri: `${protocol}://${hostWithPort}`,
+        }).href
+      );
+    });
+  });
+}
+
+export const isAuthenticated: RequestHandler = async (req, res, next) => {
+  const user = req.user as any;
+
+  if (!req.isAuthenticated() || !user.expires_at) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  // Backfill userId for existing sessions that don't have it
+  if (!user.userId && user.claims?.email) {
+    try {
+      const dbUser = await storage.getUserByEmail(user.claims.email);
+      if (dbUser) {
+        user.userId = dbUser.id;
+      }
+    } catch (error) {
+      console.error("Failed to backfill userId:", error);
+    }
+  }
+
+  const now = Math.floor(Date.now() / 1000);
+  if (now <= user.expires_at) {
+    return next();
+  }
+
+  const refreshToken = user.refresh_token;
+  if (!refreshToken) {
+    res.status(401).json({ message: "Unauthorized" });
+    return;
+  }
+
+  try {
+    const config = await getOidcConfig();
+    
+    // EXECUTIVE REQUIREMENT: Track refresh token usage for reuse detection
+    const tokenFingerprint = Buffer.from(refreshToken).toString('base64').slice(0, 12);
+    const userId = user.userId || 'anonymous';
+    const userAgent = req.get('User-Agent') || 'unknown';
+    const ip = req.ip || 'unknown';
+    
+    // Log refresh token attempt for audit trail
+    await logger.audit('REFRESH_TOKEN_USED', {
+      userId,
+      tokenFingerprint,
+      userAgent,
+      ip,
+      timestamp: new Date().toISOString()
+    });
+    
+    const tokenResponse = await client.refreshTokenGrant(config, refreshToken);
+    updateUserSession(user, tokenResponse);
+    
+    // Log successful refresh
+    await logger.audit('REFRESH_TOKEN_SUCCESS', {
+      userId,
+      tokenFingerprint,
+      newTokenIssued: true
+    });
+    
+    return next();
+  } catch (error) {
+    // EXECUTIVE ALERT: Potential refresh token reuse or compromise
+    const tokenFingerprint = refreshToken ? Buffer.from(refreshToken).toString('base64').slice(0, 12) : 'unknown';
+    const userId = user.userId || 'anonymous';
+    
+    await logger.audit('REFRESH_TOKEN_REUSE_DETECTED', {
+      userId,
+      tokenFingerprint,
+      error: error instanceof Error ? error.message : 'Unknown error',
+      userAgent: req.get('User-Agent'),
+      ip: req.ip,
+      severity: 'EXECUTIVE_PAGE',
+      alertLevel: 'CRITICAL'
+    });
+    
+    console.error(`🚨 EXECUTIVE ALERT: Potential refresh token reuse detected for user ${userId}`);
+    
+    res.status(401).json({ message: "Unauthorized" });
+    return;
+  }
+};

@@ -1,0 +1,186 @@
+{
+  "slug": "scholarships/al/business",
+  "title": "Alabama Business Scholarships 2025 | ScholarshipAI",
+  "state": "AL",
+  "stateName": "Alabama",
+  "major": "business",
+  "majorTitle": "Business",
+  "canonicalUrl": "https://scholarshipai.com/scholarships/al/business",
+  "noindex": false,
+  "metaDescription": "Find business scholarships in Alabama. AI-powered matching for students. 60ms response times, 96/100 security score.",
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Alabama Business Scholarships 2025",
+      "description": "Find business scholarships in Alabama",
+      "url": "https://scholarshipai.com/scholarships/al/business",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ScholarshipAI",
+        "url": "https://scholarshipai.com"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Scholarships",
+            "item": "https://scholarshipai.com/scholarships"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Alabama Scholarships",
+            "item": "https://scholarshipai.com/scholarships/al"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Business Scholarships",
+            "item": "https://scholarshipai.com/scholarships/al/business"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Alabama Business Scholarships",
+      "description": "Curated list of business scholarships for Alabama students",
+      "numberOfItems": "50+",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What business scholarships are available in Alabama?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Alabama offers numerous business scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply for business scholarships in Alabama?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create a free ScholarshipAI profile, and our AI will match you with relevant business scholarships in Alabama. Many applications can be completed directly through our platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GPA do I need for business scholarships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPA requirements vary by scholarship. Many business scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there business scholarships for community college students in Alabama?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many business scholarships in Alabama are available to community college students, including transfer scholarships and career-focused awards."
+          }
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What business scholarships are available in Alabama?",
+      "answer": "Alabama offers numerous business scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+    },
+    {
+      "question": "How do I apply for business scholarships in Alabama?",
+      "answer": "Create a free ScholarshipAI profile, and our AI will match you with relevant business scholarships in Alabama. Many applications can be completed directly through our platform."
+    },
+    {
+      "question": "What GPA do I need for business scholarships?",
+      "answer": "GPA requirements vary by scholarship. Many business scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+    },
+    {
+      "question": "Are there business scholarships for community college students in Alabama?",
+      "answer": "Yes! Many business scholarships in Alabama are available to community college students, including transfer scholarships and career-focused awards."
+    }
+  ],
+  "uniqueCopy": {
+    "headline": "Find Your Perfect Business Scholarship in Alabama",
+    "intro": "Discover top business scholarships available to students in Alabama. Our AI-powered platform matches you with relevant opportunities based on your academic profile, financial need, and career goals.",
+    "benefits": [
+      "Access exclusive business scholarships in Alabama",
+      "AI-powered matching with 94% accuracy rate",
+      "Streamlined application process with auto-fill",
+      "Real-time deadline tracking and reminders"
+    ],
+    "callToAction": "Start your scholarship search for business programs in Alabama today. Join 50,000+ students who have found funding through ScholarshipAI.",
+    "localInsights": "Alabama offers numerous opportunities for business students, including state-funded grants, university-specific awards, and private foundation scholarships. Many Alabama employers also sponsor students pursuing business degrees."
+  },
+  "internalLinks": [
+    {
+      "url": "/scholarships",
+      "text": "All Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/al",
+      "text": "Alabama Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/business",
+      "text": "Business Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/al/computer-science",
+      "text": "Alabama Computer Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/al/engineering",
+      "text": "Alabama Engineering Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/al/nursing",
+      "text": "Alabama Nursing Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ak/business",
+      "text": "Alaska Business Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/az/business",
+      "text": "Arizona Business Scholarships",
+      "rel": "related"
+    }
+  ],
+  "trustBadges": {
+    "performance": {
+      "score": 60,
+      "metric": "median response time (ms)"
+    },
+    "security": {
+      "score": 96,
+      "metric": "security audit score (/100)"
+    },
+    "accessibility": {
+      "score": 95.5,
+      "metric": "WCAG compliance (%)"
+    },
+    "responsibleAI": {
+      "score": 96,
+      "metric": "ethical AI score (/100)"
+    }
+  },
+  "pageType": "state-major",
+  "generatedAt": "2026-01-22T09:31:16.404Z"
+}

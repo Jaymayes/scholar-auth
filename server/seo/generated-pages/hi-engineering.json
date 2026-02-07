@@ -1,0 +1,186 @@
+{
+  "slug": "scholarships/hi/engineering",
+  "title": "Hawaii Engineering Scholarships 2025 | ScholarshipAI",
+  "state": "HI",
+  "stateName": "Hawaii",
+  "major": "engineering",
+  "majorTitle": "Engineering",
+  "canonicalUrl": "https://scholarshipai.com/scholarships/hi/engineering",
+  "noindex": false,
+  "metaDescription": "Find engineering scholarships in Hawaii. AI-powered matching for students. 60ms response times, 96/100 security score.",
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Hawaii Engineering Scholarships 2025",
+      "description": "Find engineering scholarships in Hawaii",
+      "url": "https://scholarshipai.com/scholarships/hi/engineering",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ScholarshipAI",
+        "url": "https://scholarshipai.com"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Scholarships",
+            "item": "https://scholarshipai.com/scholarships"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Hawaii Scholarships",
+            "item": "https://scholarshipai.com/scholarships/hi"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Engineering Scholarships",
+            "item": "https://scholarshipai.com/scholarships/hi/engineering"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Hawaii Engineering Scholarships",
+      "description": "Curated list of engineering scholarships for Hawaii students",
+      "numberOfItems": "50+",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What engineering scholarships are available in Hawaii?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hawaii offers numerous engineering scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply for engineering scholarships in Hawaii?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create a free ScholarshipAI profile, and our AI will match you with relevant engineering scholarships in Hawaii. Many applications can be completed directly through our platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GPA do I need for engineering scholarships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPA requirements vary by scholarship. Many engineering scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there engineering scholarships for community college students in Hawaii?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many engineering scholarships in Hawaii are available to community college students, including transfer scholarships and career-focused awards."
+          }
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What engineering scholarships are available in Hawaii?",
+      "answer": "Hawaii offers numerous engineering scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+    },
+    {
+      "question": "How do I apply for engineering scholarships in Hawaii?",
+      "answer": "Create a free ScholarshipAI profile, and our AI will match you with relevant engineering scholarships in Hawaii. Many applications can be completed directly through our platform."
+    },
+    {
+      "question": "What GPA do I need for engineering scholarships?",
+      "answer": "GPA requirements vary by scholarship. Many engineering scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+    },
+    {
+      "question": "Are there engineering scholarships for community college students in Hawaii?",
+      "answer": "Yes! Many engineering scholarships in Hawaii are available to community college students, including transfer scholarships and career-focused awards."
+    }
+  ],
+  "uniqueCopy": {
+    "headline": "Find Your Perfect Engineering Scholarship in Hawaii",
+    "intro": "Discover top engineering scholarships available to students in Hawaii. Our AI-powered platform matches you with relevant opportunities based on your academic profile, financial need, and career goals.",
+    "benefits": [
+      "Access exclusive engineering scholarships in Hawaii",
+      "AI-powered matching with 94% accuracy rate",
+      "Streamlined application process with auto-fill",
+      "Real-time deadline tracking and reminders"
+    ],
+    "callToAction": "Start your scholarship search for engineering programs in Hawaii today. Join 50,000+ students who have found funding through ScholarshipAI.",
+    "localInsights": "Hawaii offers numerous opportunities for engineering students, including state-funded grants, university-specific awards, and private foundation scholarships. Many Hawaii employers also sponsor students pursuing engineering degrees."
+  },
+  "internalLinks": [
+    {
+      "url": "/scholarships",
+      "text": "All Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/hi",
+      "text": "Hawaii Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/engineering",
+      "text": "Engineering Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/hi/computer-science",
+      "text": "Hawaii Computer Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/hi/nursing",
+      "text": "Hawaii Nursing Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/hi/business",
+      "text": "Hawaii Business Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/al/engineering",
+      "text": "Alabama Engineering Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ak/engineering",
+      "text": "Alaska Engineering Scholarships",
+      "rel": "related"
+    }
+  ],
+  "trustBadges": {
+    "performance": {
+      "score": 60,
+      "metric": "median response time (ms)"
+    },
+    "security": {
+      "score": 96,
+      "metric": "security audit score (/100)"
+    },
+    "accessibility": {
+      "score": 95.5,
+      "metric": "WCAG compliance (%)"
+    },
+    "responsibleAI": {
+      "score": 96,
+      "metric": "ethical AI score (/100)"
+    }
+  },
+  "pageType": "state-major",
+  "generatedAt": "2026-01-22T09:31:16.421Z"
+}

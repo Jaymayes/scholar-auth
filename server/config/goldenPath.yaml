@@ -1,0 +1,97 @@
+# Golden Path Enforcement Manifest
+# CEO Executive Order SAA-EO-2026-01-19-01
+# Generated: 2026-01-19T08:45:00Z
+
+version: "1.0.0"
+order_id: "SAA-EO-2026-01-19-01"
+created: "2026-01-19T08:45:00Z"
+enforcement: strict
+
+apps:
+  A5_student_pilot:
+    name: "Student Pilot"
+    base_url: "https://student-pilot-jamarrlmayes.replit.app"
+    daas_enforcement: true
+    local_state_allowed: false
+    required_health_endpoints:
+      - path: "/health"
+        expected_status: 200
+        required_markers: ["status", "capabilities"]
+      - path: "/readyz"
+        expected_status: 200
+        required_markers: ["ready"]
+    security_headers:
+      - "Strict-Transport-Security"
+      - "X-Frame-Options"
+      - "X-Content-Type-Options"
+    database_access:
+      mode: "api_only"
+      direct_db_url_embedded: false
+      core_api_endpoint: "https://scholarship-api-jamarrlmayes.replit.app"
+
+  A7_auto_page_maker:
+    name: "Auto Page Maker"
+    base_url: "https://auto-page-maker-jamarrlmayes.replit.app"
+    daas_enforcement: true
+    local_state_allowed: false
+    required_health_endpoints:
+      - path: "/health"
+        expected_status: 200
+        required_markers: ["status", "version", "app"]
+      - path: "/readyz"
+        expected_status: 200
+        required_markers: ["ready"]
+      - path: "/sitemap.xml"
+        expected_status: 200
+        required_markers: ["urlset"]
+    security_headers:
+      - "Strict-Transport-Security"
+      - "X-Frame-Options"
+      - "X-Content-Type-Options"
+    database_access:
+      mode: "api_only"
+      direct_db_url_embedded: false
+      core_api_endpoint: "https://scholarship-api-jamarrlmayes.replit.app"
+
+validation:
+  smoke_tests:
+    - health_200_with_markers
+    - readyz_green
+    - security_headers_present
+  
+  confirmation_required: 3
+  confirmation_sources:
+    - http_trace
+    - matching_logs
+    - a8_checksum
+
+drift_sentinel:
+  enabled: true
+  watchtower_app: "A8_auto_com_center"
+  tracked_fields:
+    - workspace_id
+    - commit_sha
+    - manifest_digest
+    - build_artifact_sha
+  
+  alert_rules:
+    manifest_mismatch:
+      action: "auto_block_publish"
+      notify: "on_call"
+    
+    endpoint_regression:
+      threshold_5xx: "2%"
+      threshold_404: "2%"
+      duration_minutes: 10
+      action: "disable_b2c_capture"
+      keep_refunds: true
+      open_cir: true
+
+success_criteria:
+  ramp_request:
+    consecutive_snapshots: 2
+    snapshot_duration_minutes: 60
+    required_status: "200 OK with markers"
+    latency_slo:
+      A1_A4: "P95 ≤ 120ms"
+      A6_A8: "P95 ≤ 200ms"

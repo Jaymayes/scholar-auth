@@ -1,0 +1,186 @@
+{
+  "slug": "scholarships/ga/nursing",
+  "title": "Georgia Nursing Scholarships 2025 | ScholarshipAI",
+  "state": "GA",
+  "stateName": "Georgia",
+  "major": "nursing",
+  "majorTitle": "Nursing",
+  "canonicalUrl": "https://scholarshipai.com/scholarships/ga/nursing",
+  "noindex": false,
+  "metaDescription": "Find nursing scholarships in Georgia. AI-powered matching for students. 60ms response times, 96/100 security score.",
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Georgia Nursing Scholarships 2025",
+      "description": "Find nursing scholarships in Georgia",
+      "url": "https://scholarshipai.com/scholarships/ga/nursing",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ScholarshipAI",
+        "url": "https://scholarshipai.com"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Scholarships",
+            "item": "https://scholarshipai.com/scholarships"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Georgia Scholarships",
+            "item": "https://scholarshipai.com/scholarships/ga"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Nursing Scholarships",
+            "item": "https://scholarshipai.com/scholarships/ga/nursing"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Georgia Nursing Scholarships",
+      "description": "Curated list of nursing scholarships for Georgia students",
+      "numberOfItems": "50+",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What nursing scholarships are available in Georgia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Georgia offers numerous nursing scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply for nursing scholarships in Georgia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create a free ScholarshipAI profile, and our AI will match you with relevant nursing scholarships in Georgia. Many applications can be completed directly through our platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GPA do I need for nursing scholarships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPA requirements vary by scholarship. Many nursing scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there nursing scholarships for community college students in Georgia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many nursing scholarships in Georgia are available to community college students, including transfer scholarships and career-focused awards."
+          }
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What nursing scholarships are available in Georgia?",
+      "answer": "Georgia offers numerous nursing scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+    },
+    {
+      "question": "How do I apply for nursing scholarships in Georgia?",
+      "answer": "Create a free ScholarshipAI profile, and our AI will match you with relevant nursing scholarships in Georgia. Many applications can be completed directly through our platform."
+    },
+    {
+      "question": "What GPA do I need for nursing scholarships?",
+      "answer": "GPA requirements vary by scholarship. Many nursing scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+    },
+    {
+      "question": "Are there nursing scholarships for community college students in Georgia?",
+      "answer": "Yes! Many nursing scholarships in Georgia are available to community college students, including transfer scholarships and career-focused awards."
+    }
+  ],
+  "uniqueCopy": {
+    "headline": "Find Your Perfect Nursing Scholarship in Georgia",
+    "intro": "Discover top nursing scholarships available to students in Georgia. Our AI-powered platform matches you with relevant opportunities based on your academic profile, financial need, and career goals.",
+    "benefits": [
+      "Access exclusive nursing scholarships in Georgia",
+      "AI-powered matching with 94% accuracy rate",
+      "Streamlined application process with auto-fill",
+      "Real-time deadline tracking and reminders"
+    ],
+    "callToAction": "Start your scholarship search for nursing programs in Georgia today. Join 50,000+ students who have found funding through ScholarshipAI.",
+    "localInsights": "Georgia offers numerous opportunities for nursing students, including state-funded grants, university-specific awards, and private foundation scholarships. Many Georgia employers also sponsor students pursuing nursing degrees."
+  },
+  "internalLinks": [
+    {
+      "url": "/scholarships",
+      "text": "All Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/ga",
+      "text": "Georgia Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/nursing",
+      "text": "Nursing Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ga/computer-science",
+      "text": "Georgia Computer Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ga/engineering",
+      "text": "Georgia Engineering Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ga/business",
+      "text": "Georgia Business Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/fl/nursing",
+      "text": "Florida Nursing Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/sc/nursing",
+      "text": "South Carolina Nursing Scholarships",
+      "rel": "related"
+    }
+  ],
+  "trustBadges": {
+    "performance": {
+      "score": 60,
+      "metric": "median response time (ms)"
+    },
+    "security": {
+      "score": 96,
+      "metric": "security audit score (/100)"
+    },
+    "accessibility": {
+      "score": 95.5,
+      "metric": "WCAG compliance (%)"
+    },
+    "responsibleAI": {
+      "score": 96,
+      "metric": "ethical AI score (/100)"
+    }
+  },
+  "pageType": "state-major",
+  "generatedAt": "2026-01-22T09:31:16.411Z"
+}

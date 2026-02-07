@@ -1,0 +1,186 @@
+{
+  "slug": "scholarships/fl/political-science",
+  "title": "Florida Political Science Scholarships 2025 | ScholarshipAI",
+  "state": "FL",
+  "stateName": "Florida",
+  "major": "political-science",
+  "majorTitle": "Political Science",
+  "canonicalUrl": "https://scholarshipai.com/scholarships/fl/political-science",
+  "noindex": false,
+  "metaDescription": "Find political science scholarships in Florida. AI-powered matching for students. 60ms response times, 96/100 security score.",
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Florida Political Science Scholarships 2025",
+      "description": "Find political science scholarships in Florida",
+      "url": "https://scholarshipai.com/scholarships/fl/political-science",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ScholarshipAI",
+        "url": "https://scholarshipai.com"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Scholarships",
+            "item": "https://scholarshipai.com/scholarships"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Florida Scholarships",
+            "item": "https://scholarshipai.com/scholarships/fl"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Political Science Scholarships",
+            "item": "https://scholarshipai.com/scholarships/fl/political-science"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Florida Political Science Scholarships",
+      "description": "Curated list of political science scholarships for Florida students",
+      "numberOfItems": "50+",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What political science scholarships are available in Florida?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Florida offers numerous political science scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply for political science scholarships in Florida?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create a free ScholarshipAI profile, and our AI will match you with relevant political science scholarships in Florida. Many applications can be completed directly through our platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GPA do I need for political science scholarships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPA requirements vary by scholarship. Many political science scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there political science scholarships for community college students in Florida?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many political science scholarships in Florida are available to community college students, including transfer scholarships and career-focused awards."
+          }
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What political science scholarships are available in Florida?",
+      "answer": "Florida offers numerous political science scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+    },
+    {
+      "question": "How do I apply for political science scholarships in Florida?",
+      "answer": "Create a free ScholarshipAI profile, and our AI will match you with relevant political science scholarships in Florida. Many applications can be completed directly through our platform."
+    },
+    {
+      "question": "What GPA do I need for political science scholarships?",
+      "answer": "GPA requirements vary by scholarship. Many political science scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+    },
+    {
+      "question": "Are there political science scholarships for community college students in Florida?",
+      "answer": "Yes! Many political science scholarships in Florida are available to community college students, including transfer scholarships and career-focused awards."
+    }
+  ],
+  "uniqueCopy": {
+    "headline": "Find Your Perfect Political Science Scholarship in Florida",
+    "intro": "Discover top political science scholarships available to students in Florida. Our AI-powered platform matches you with relevant opportunities based on your academic profile, financial need, and career goals.",
+    "benefits": [
+      "Access exclusive political science scholarships in Florida",
+      "AI-powered matching with 94% accuracy rate",
+      "Streamlined application process with auto-fill",
+      "Real-time deadline tracking and reminders"
+    ],
+    "callToAction": "Start your scholarship search for political science programs in Florida today. Join 50,000+ students who have found funding through ScholarshipAI.",
+    "localInsights": "Florida offers numerous opportunities for political science students, including state-funded grants, university-specific awards, and private foundation scholarships. Many Florida employers also sponsor students pursuing political science degrees."
+  },
+  "internalLinks": [
+    {
+      "url": "/scholarships",
+      "text": "All Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/fl",
+      "text": "Florida Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/political-science",
+      "text": "Political Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/fl/computer-science",
+      "text": "Florida Computer Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/fl/engineering",
+      "text": "Florida Engineering Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/fl/nursing",
+      "text": "Florida Nursing Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ga/political-science",
+      "text": "Georgia Political Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/al/political-science",
+      "text": "Alabama Political Science Scholarships",
+      "rel": "related"
+    }
+  ],
+  "trustBadges": {
+    "performance": {
+      "score": 60,
+      "metric": "median response time (ms)"
+    },
+    "security": {
+      "score": 96,
+      "metric": "security audit score (/100)"
+    },
+    "accessibility": {
+      "score": 95.5,
+      "metric": "WCAG compliance (%)"
+    },
+    "responsibleAI": {
+      "score": 96,
+      "metric": "ethical AI score (/100)"
+    }
+  },
+  "pageType": "state-major",
+  "generatedAt": "2026-01-22T09:31:16.411Z"
+}

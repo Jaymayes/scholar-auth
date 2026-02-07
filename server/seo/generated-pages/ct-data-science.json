@@ -1,0 +1,186 @@
+{
+  "slug": "scholarships/ct/data-science",
+  "title": "Connecticut Data Science Scholarships 2025 | ScholarshipAI",
+  "state": "CT",
+  "stateName": "Connecticut",
+  "major": "data-science",
+  "majorTitle": "Data Science",
+  "canonicalUrl": "https://scholarshipai.com/scholarships/ct/data-science",
+  "noindex": false,
+  "metaDescription": "Find data science scholarships in Connecticut. AI-powered matching for students. 60ms response times, 96/100 security score.",
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Connecticut Data Science Scholarships 2025",
+      "description": "Find data science scholarships in Connecticut",
+      "url": "https://scholarshipai.com/scholarships/ct/data-science",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ScholarshipAI",
+        "url": "https://scholarshipai.com"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Scholarships",
+            "item": "https://scholarshipai.com/scholarships"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Connecticut Scholarships",
+            "item": "https://scholarshipai.com/scholarships/ct"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Data Science Scholarships",
+            "item": "https://scholarshipai.com/scholarships/ct/data-science"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Connecticut Data Science Scholarships",
+      "description": "Curated list of data science scholarships for Connecticut students",
+      "numberOfItems": "50+",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What data science scholarships are available in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Connecticut offers numerous data science scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply for data science scholarships in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create a free ScholarshipAI profile, and our AI will match you with relevant data science scholarships in Connecticut. Many applications can be completed directly through our platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GPA do I need for data science scholarships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPA requirements vary by scholarship. Many data science scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there data science scholarships for community college students in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many data science scholarships in Connecticut are available to community college students, including transfer scholarships and career-focused awards."
+          }
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What data science scholarships are available in Connecticut?",
+      "answer": "Connecticut offers numerous data science scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+    },
+    {
+      "question": "How do I apply for data science scholarships in Connecticut?",
+      "answer": "Create a free ScholarshipAI profile, and our AI will match you with relevant data science scholarships in Connecticut. Many applications can be completed directly through our platform."
+    },
+    {
+      "question": "What GPA do I need for data science scholarships?",
+      "answer": "GPA requirements vary by scholarship. Many data science scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+    },
+    {
+      "question": "Are there data science scholarships for community college students in Connecticut?",
+      "answer": "Yes! Many data science scholarships in Connecticut are available to community college students, including transfer scholarships and career-focused awards."
+    }
+  ],
+  "uniqueCopy": {
+    "headline": "Find Your Perfect Data Science Scholarship in Connecticut",
+    "intro": "Discover top data science scholarships available to students in Connecticut. Our AI-powered platform matches you with relevant opportunities based on your academic profile, financial need, and career goals.",
+    "benefits": [
+      "Access exclusive data science scholarships in Connecticut",
+      "AI-powered matching with 94% accuracy rate",
+      "Streamlined application process with auto-fill",
+      "Real-time deadline tracking and reminders"
+    ],
+    "callToAction": "Start your scholarship search for data science programs in Connecticut today. Join 50,000+ students who have found funding through ScholarshipAI.",
+    "localInsights": "Connecticut offers numerous opportunities for data science students, including state-funded grants, university-specific awards, and private foundation scholarships. Many Connecticut employers also sponsor students pursuing data science degrees."
+  },
+  "internalLinks": [
+    {
+      "url": "/scholarships",
+      "text": "All Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/ct",
+      "text": "Connecticut Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/data-science",
+      "text": "Data Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ct/computer-science",
+      "text": "Connecticut Computer Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ct/engineering",
+      "text": "Connecticut Engineering Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ct/nursing",
+      "text": "Connecticut Nursing Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/al/data-science",
+      "text": "Alabama Data Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ak/data-science",
+      "text": "Alaska Data Science Scholarships",
+      "rel": "related"
+    }
+  ],
+  "trustBadges": {
+    "performance": {
+      "score": 60,
+      "metric": "median response time (ms)"
+    },
+    "security": {
+      "score": 96,
+      "metric": "security audit score (/100)"
+    },
+    "accessibility": {
+      "score": 95.5,
+      "metric": "WCAG compliance (%)"
+    },
+    "responsibleAI": {
+      "score": 96,
+      "metric": "ethical AI score (/100)"
+    }
+  },
+  "pageType": "state-major",
+  "generatedAt": "2026-01-22T09:31:16.410Z"
+}

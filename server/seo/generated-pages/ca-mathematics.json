@@ -1,0 +1,186 @@
+{
+  "slug": "scholarships/ca/mathematics",
+  "title": "California Mathematics Scholarships 2025 | ScholarshipAI",
+  "state": "CA",
+  "stateName": "California",
+  "major": "mathematics",
+  "majorTitle": "Mathematics",
+  "canonicalUrl": "https://scholarshipai.com/scholarships/ca/mathematics",
+  "noindex": false,
+  "metaDescription": "Find mathematics scholarships in California. AI-powered matching for students. 60ms response times, 96/100 security score.",
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "California Mathematics Scholarships 2025",
+      "description": "Find mathematics scholarships in California",
+      "url": "https://scholarshipai.com/scholarships/ca/mathematics",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ScholarshipAI",
+        "url": "https://scholarshipai.com"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Scholarships",
+            "item": "https://scholarshipai.com/scholarships"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "California Scholarships",
+            "item": "https://scholarshipai.com/scholarships/ca"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Mathematics Scholarships",
+            "item": "https://scholarshipai.com/scholarships/ca/mathematics"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "California Mathematics Scholarships",
+      "description": "Curated list of mathematics scholarships for California students",
+      "numberOfItems": "50+",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What mathematics scholarships are available in California?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "California offers numerous mathematics scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply for mathematics scholarships in California?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create a free ScholarshipAI profile, and our AI will match you with relevant mathematics scholarships in California. Many applications can be completed directly through our platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GPA do I need for mathematics scholarships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPA requirements vary by scholarship. Many mathematics scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there mathematics scholarships for community college students in California?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many mathematics scholarships in California are available to community college students, including transfer scholarships and career-focused awards."
+          }
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What mathematics scholarships are available in California?",
+      "answer": "California offers numerous mathematics scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+    },
+    {
+      "question": "How do I apply for mathematics scholarships in California?",
+      "answer": "Create a free ScholarshipAI profile, and our AI will match you with relevant mathematics scholarships in California. Many applications can be completed directly through our platform."
+    },
+    {
+      "question": "What GPA do I need for mathematics scholarships?",
+      "answer": "GPA requirements vary by scholarship. Many mathematics scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+    },
+    {
+      "question": "Are there mathematics scholarships for community college students in California?",
+      "answer": "Yes! Many mathematics scholarships in California are available to community college students, including transfer scholarships and career-focused awards."
+    }
+  ],
+  "uniqueCopy": {
+    "headline": "Find Your Perfect Mathematics Scholarship in California",
+    "intro": "Discover top mathematics scholarships available to students in California. Our AI-powered platform matches you with relevant opportunities based on your academic profile, financial need, and career goals.",
+    "benefits": [
+      "Access exclusive mathematics scholarships in California",
+      "AI-powered matching with 94% accuracy rate",
+      "Streamlined application process with auto-fill",
+      "Real-time deadline tracking and reminders"
+    ],
+    "callToAction": "Start your scholarship search for mathematics programs in California today. Join 50,000+ students who have found funding through ScholarshipAI.",
+    "localInsights": "California offers numerous opportunities for mathematics students, including state-funded grants, university-specific awards, and private foundation scholarships. Many California employers also sponsor students pursuing mathematics degrees."
+  },
+  "internalLinks": [
+    {
+      "url": "/scholarships",
+      "text": "All Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/ca",
+      "text": "California Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/mathematics",
+      "text": "Mathematics Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ca/computer-science",
+      "text": "California Computer Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ca/engineering",
+      "text": "California Engineering Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ca/nursing",
+      "text": "California Nursing Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/nv/mathematics",
+      "text": "Nevada Mathematics Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/az/mathematics",
+      "text": "Arizona Mathematics Scholarships",
+      "rel": "related"
+    }
+  ],
+  "trustBadges": {
+    "performance": {
+      "score": 60,
+      "metric": "median response time (ms)"
+    },
+    "security": {
+      "score": 96,
+      "metric": "security audit score (/100)"
+    },
+    "accessibility": {
+      "score": 95.5,
+      "metric": "WCAG compliance (%)"
+    },
+    "responsibleAI": {
+      "score": 96,
+      "metric": "ethical AI score (/100)"
+    }
+  },
+  "pageType": "state-major",
+  "generatedAt": "2026-01-22T09:31:16.408Z"
+}

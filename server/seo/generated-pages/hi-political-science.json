@@ -1,0 +1,186 @@
+{
+  "slug": "scholarships/hi/political-science",
+  "title": "Hawaii Political Science Scholarships 2025 | ScholarshipAI",
+  "state": "HI",
+  "stateName": "Hawaii",
+  "major": "political-science",
+  "majorTitle": "Political Science",
+  "canonicalUrl": "https://scholarshipai.com/scholarships/hi/political-science",
+  "noindex": false,
+  "metaDescription": "Find political science scholarships in Hawaii. AI-powered matching for students. 60ms response times, 96/100 security score.",
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Hawaii Political Science Scholarships 2025",
+      "description": "Find political science scholarships in Hawaii",
+      "url": "https://scholarshipai.com/scholarships/hi/political-science",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ScholarshipAI",
+        "url": "https://scholarshipai.com"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Scholarships",
+            "item": "https://scholarshipai.com/scholarships"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Hawaii Scholarships",
+            "item": "https://scholarshipai.com/scholarships/hi"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Political Science Scholarships",
+            "item": "https://scholarshipai.com/scholarships/hi/political-science"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Hawaii Political Science Scholarships",
+      "description": "Curated list of political science scholarships for Hawaii students",
+      "numberOfItems": "50+",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What political science scholarships are available in Hawaii?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hawaii offers numerous political science scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply for political science scholarships in Hawaii?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create a free ScholarshipAI profile, and our AI will match you with relevant political science scholarships in Hawaii. Many applications can be completed directly through our platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GPA do I need for political science scholarships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPA requirements vary by scholarship. Many political science scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there political science scholarships for community college students in Hawaii?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many political science scholarships in Hawaii are available to community college students, including transfer scholarships and career-focused awards."
+          }
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What political science scholarships are available in Hawaii?",
+      "answer": "Hawaii offers numerous political science scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+    },
+    {
+      "question": "How do I apply for political science scholarships in Hawaii?",
+      "answer": "Create a free ScholarshipAI profile, and our AI will match you with relevant political science scholarships in Hawaii. Many applications can be completed directly through our platform."
+    },
+    {
+      "question": "What GPA do I need for political science scholarships?",
+      "answer": "GPA requirements vary by scholarship. Many political science scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+    },
+    {
+      "question": "Are there political science scholarships for community college students in Hawaii?",
+      "answer": "Yes! Many political science scholarships in Hawaii are available to community college students, including transfer scholarships and career-focused awards."
+    }
+  ],
+  "uniqueCopy": {
+    "headline": "Find Your Perfect Political Science Scholarship in Hawaii",
+    "intro": "Discover top political science scholarships available to students in Hawaii. Our AI-powered platform matches you with relevant opportunities based on your academic profile, financial need, and career goals.",
+    "benefits": [
+      "Access exclusive political science scholarships in Hawaii",
+      "AI-powered matching with 94% accuracy rate",
+      "Streamlined application process with auto-fill",
+      "Real-time deadline tracking and reminders"
+    ],
+    "callToAction": "Start your scholarship search for political science programs in Hawaii today. Join 50,000+ students who have found funding through ScholarshipAI.",
+    "localInsights": "Hawaii offers numerous opportunities for political science students, including state-funded grants, university-specific awards, and private foundation scholarships. Many Hawaii employers also sponsor students pursuing political science degrees."
+  },
+  "internalLinks": [
+    {
+      "url": "/scholarships",
+      "text": "All Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/hi",
+      "text": "Hawaii Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/political-science",
+      "text": "Political Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/hi/computer-science",
+      "text": "Hawaii Computer Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/hi/engineering",
+      "text": "Hawaii Engineering Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/hi/nursing",
+      "text": "Hawaii Nursing Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/al/political-science",
+      "text": "Alabama Political Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ak/political-science",
+      "text": "Alaska Political Science Scholarships",
+      "rel": "related"
+    }
+  ],
+  "trustBadges": {
+    "performance": {
+      "score": 60,
+      "metric": "median response time (ms)"
+    },
+    "security": {
+      "score": 96,
+      "metric": "security audit score (/100)"
+    },
+    "accessibility": {
+      "score": 95.5,
+      "metric": "WCAG compliance (%)"
+    },
+    "responsibleAI": {
+      "score": 96,
+      "metric": "ethical AI score (/100)"
+    }
+  },
+  "pageType": "state-major",
+  "generatedAt": "2026-01-22T09:31:16.421Z"
+}

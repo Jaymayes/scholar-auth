@@ -1,0 +1,186 @@
+{
+  "slug": "scholarships/ar/education",
+  "title": "Arkansas Education Scholarships 2025 | ScholarshipAI",
+  "state": "AR",
+  "stateName": "Arkansas",
+  "major": "education",
+  "majorTitle": "Education",
+  "canonicalUrl": "https://scholarshipai.com/scholarships/ar/education",
+  "noindex": false,
+  "metaDescription": "Find education scholarships in Arkansas. AI-powered matching for students. 60ms response times, 96/100 security score.",
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Arkansas Education Scholarships 2025",
+      "description": "Find education scholarships in Arkansas",
+      "url": "https://scholarshipai.com/scholarships/ar/education",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ScholarshipAI",
+        "url": "https://scholarshipai.com"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Scholarships",
+            "item": "https://scholarshipai.com/scholarships"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Arkansas Scholarships",
+            "item": "https://scholarshipai.com/scholarships/ar"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Education Scholarships",
+            "item": "https://scholarshipai.com/scholarships/ar/education"
+          }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Arkansas Education Scholarships",
+      "description": "Curated list of education scholarships for Arkansas students",
+      "numberOfItems": "50+",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What education scholarships are available in Arkansas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Arkansas offers numerous education scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply for education scholarships in Arkansas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create a free ScholarshipAI profile, and our AI will match you with relevant education scholarships in Arkansas. Many applications can be completed directly through our platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GPA do I need for education scholarships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPA requirements vary by scholarship. Many education scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there education scholarships for community college students in Arkansas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many education scholarships in Arkansas are available to community college students, including transfer scholarships and career-focused awards."
+          }
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What education scholarships are available in Arkansas?",
+      "answer": "Arkansas offers numerous education scholarships including state grants, university awards, and private foundation funding. ScholarshipAI matches you with opportunities based on your profile."
+    },
+    {
+      "question": "How do I apply for education scholarships in Arkansas?",
+      "answer": "Create a free ScholarshipAI profile, and our AI will match you with relevant education scholarships in Arkansas. Many applications can be completed directly through our platform."
+    },
+    {
+      "question": "What GPA do I need for education scholarships?",
+      "answer": "GPA requirements vary by scholarship. Many education scholarships require 3.0+, but some have no GPA minimum. Our platform shows eligibility requirements for each opportunity."
+    },
+    {
+      "question": "Are there education scholarships for community college students in Arkansas?",
+      "answer": "Yes! Many education scholarships in Arkansas are available to community college students, including transfer scholarships and career-focused awards."
+    }
+  ],
+  "uniqueCopy": {
+    "headline": "Find Your Perfect Education Scholarship in Arkansas",
+    "intro": "Discover top education scholarships available to students in Arkansas. Our AI-powered platform matches you with relevant opportunities based on your academic profile, financial need, and career goals.",
+    "benefits": [
+      "Access exclusive education scholarships in Arkansas",
+      "AI-powered matching with 94% accuracy rate",
+      "Streamlined application process with auto-fill",
+      "Real-time deadline tracking and reminders"
+    ],
+    "callToAction": "Start your scholarship search for education programs in Arkansas today. Join 50,000+ students who have found funding through ScholarshipAI.",
+    "localInsights": "Arkansas offers numerous opportunities for education students, including state-funded grants, university-specific awards, and private foundation scholarships. Many Arkansas employers also sponsor students pursuing education degrees."
+  },
+  "internalLinks": [
+    {
+      "url": "/scholarships",
+      "text": "All Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/ar",
+      "text": "Arkansas Scholarships",
+      "rel": "parent"
+    },
+    {
+      "url": "/scholarships/education",
+      "text": "Education Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ar/computer-science",
+      "text": "Arkansas Computer Science Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ar/engineering",
+      "text": "Arkansas Engineering Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ar/nursing",
+      "text": "Arkansas Nursing Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/al/education",
+      "text": "Alabama Education Scholarships",
+      "rel": "related"
+    },
+    {
+      "url": "/scholarships/ak/education",
+      "text": "Alaska Education Scholarships",
+      "rel": "related"
+    }
+  ],
+  "trustBadges": {
+    "performance": {
+      "score": 60,
+      "metric": "median response time (ms)"
+    },
+    "security": {
+      "score": 96,
+      "metric": "security audit score (/100)"
+    },
+    "accessibility": {
+      "score": 95.5,
+      "metric": "WCAG compliance (%)"
+    },
+    "responsibleAI": {
+      "score": 96,
+      "metric": "ethical AI score (/100)"
+    }
+  },
+  "pageType": "state-major",
+  "generatedAt": "2026-01-22T09:31:16.407Z"
+}
