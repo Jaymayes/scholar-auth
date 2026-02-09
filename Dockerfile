@@ -18,6 +18,9 @@ RUN npm ci --omit=dev && npm cache clean --force
 # Copy pre-built application
 COPY dist ./dist
 
+# Create writable directories needed at runtime
+RUN mkdir -p /app/monitoring/exports && chown -R scholar:nodejs /app/monitoring
+
 # Set production environment
 ENV NODE_ENV=production
 ENV PORT=8080
