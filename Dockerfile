@@ -18,14 +18,8 @@ RUN npm ci --omit=dev && npm cache clean --force
 # Patch openid-client exports to include ./passport subpath
 # openid-client@5.7.1 has lib/passport_strategy.js but no exports entry for it
 # Node 20 strict ESM resolution requires explicit exports map entries
-RUN node -e "\
-  const fs = require('fs');\
-  const pkg = JSON.parse(fs.readFileSync('node_modules/openid-client/package.json','utf8'));\
-  if (typeof pkg.exports === 'object' && !pkg.exports['./passport']) {\
-    pkg.exports = { '.': pkg.exports, './passport': './lib/passport_strategy.js' };\
-    fs.writeFileSync('node_modules/openid-client/package.json', JSON.stringify(pkg, null, 2));\
-    console.log('Patched openid-client exports: added ./passport subpath');\
-  } else { console.log('openid-client exports already includes ./passport or no patch needed'); }"
+COPY patches/patch-oidc-exports.js /tmp/patch-oidc-exports.js
+RUN node /tmp/patch-oidc-exports.js && rm /tmp/patch-oidc-exports.js
 
 # Copy pre-built application
 COPY dist ./dist
