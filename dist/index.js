@@ -8971,7 +8971,8 @@ var EmailService = class {
 var emailService = new EmailService();
 
 // server/middleware/rateLimiter.ts
-import rateLimit, { ipKeyGenerator } from "express-rate-limit";
+import rateLimit from "express-rate-limit";
+var ipKeyGenerator = (req) => req.ip || req.socket?.remoteAddress || "unknown";
 var createAdvancedKeyGenerator = (prefix) => {
   return (req) => {
     const ipKey = ipKeyGenerator(req);
