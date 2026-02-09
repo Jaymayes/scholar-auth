@@ -15,12 +15,6 @@ RUN apk add --no-cache curl && rm -rf /var/cache/apk/*
 COPY package*.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 
-# Patch openid-client exports to include ./passport subpath
-# openid-client@5.7.1 has lib/passport_strategy.js but no exports entry for it
-# Node 20 strict ESM resolution requires explicit exports map entries
-COPY patches/patch-oidc-exports.js /tmp/patch-oidc-exports.js
-RUN node /tmp/patch-oidc-exports.js && rm /tmp/patch-oidc-exports.js
-
 # Copy pre-built application
 COPY dist ./dist
 
