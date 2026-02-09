@@ -4416,7 +4416,7 @@ __export(replitAuth_exports, {
   setupAuth: () => setupAuth
 });
 import * as client from "openid-client";
-import { Strategy } from "openid-client/passport";
+import Strategy from "openid-client/lib/passport_strategy.js";
 import passport from "passport";
 import session from "express-session";
 import memoize from "memoizee";
