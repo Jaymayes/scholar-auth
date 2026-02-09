@@ -31,7 +31,7 @@
     "memoizee": "^0.4.15",
     "nanoid": "^5.0.0",
     "oidc-provider": "^8.0.0",
-    "openid-client": "5.7.1",
+    "openid-client": "^6.3.3",
     "passport": "^0.7.0",
     "permissions-policy": "^0.6.0",
     "postmark": "^4.0.0",

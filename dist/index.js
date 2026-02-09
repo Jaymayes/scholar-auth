@@ -4416,7 +4416,7 @@ __export(replitAuth_exports, {
   setupAuth: () => setupAuth
 });
 import * as client from "openid-client";
-const { Strategy } = client;
+import { Strategy } from "openid-client/passport";
 import passport from "passport";
 import session from "express-session";
 import memoize from "memoizee";
@@ -21331,6 +21331,23 @@ var environmentSchema = z5.object({
 });
 function validateEnvironment() {
   console.log("\u{1F512} Validating environment configuration...");
+  // Auto-extract PG* vars from DATABASE_URL if missing or invalid (Railway compatibility)
+  if (process.env.DATABASE_URL) {
+    try {
+      const dbUrl = new URL(process.env.DATABASE_URL);
+      if (!process.env.PGHOST || process.env.PGHOST === '') process.env.PGHOST = dbUrl.hostname;
+      if (!process.env.PGPORT || !/^\d+$/.test(process.env.PGPORT)) {
+        const extractedPort = dbUrl.port || '5432';
+        console.log(`\u{1F527} PGPORT auto-corrected from "${process.env.PGPORT}" to "${extractedPort}" (extracted from DATABASE_URL)`);
+        process.env.PGPORT = extractedPort;
+      }
+      if (!process.env.PGDATABASE || process.env.PGDATABASE === '') process.env.PGDATABASE = dbUrl.pathname.slice(1);
+      if (!process.env.PGUSER || process.env.PGUSER === '') process.env.PGUSER = dbUrl.username;
+      if (!process.env.PGPASSWORD || process.env.PGPASSWORD === '') process.env.PGPASSWORD = dbUrl.password;
+    } catch (e) {
+      console.warn("\u26A0\uFE0F Could not parse DATABASE_URL for PG var extraction:", e.message);
+    }
+  }
   try {
     const env = environmentSchema.parse(process.env);
     if (env.NODE_ENV === "production") {
