@@ -941,7 +941,7 @@ var init_db = __esm({
       keepAlive: false
       // Disabled per Neon guidance for -pooler endpoints
     });
-    db = drizzle({ client: pool, schema: schema_exports });
+    db = drizzle(pool, { schema: schema_exports });
   }
 });
 
