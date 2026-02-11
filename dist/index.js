@@ -25139,8 +25139,25 @@ var distPath = path4.resolve(import.meta.dirname, "..", "dist", "public");
       }
     }
   }
+  // Start a minimal HTTP server early so Railway doesn't kill container during DB init
+  const earlyPort = parseInt(process.env.PORT || "5000", 10);
+  const earlyHttp = (await import("http")).createServer((req, res) => {
+    if (req.url === "/health" || req.url === "/") {
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ status: "initializing", phase: "waiting_for_database" }));
+    } else {
+      res.writeHead(503, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ status: "initializing" }));
+    }
+  });
+  earlyHttp.listen(earlyPort, "0.0.0.0", () => {
+    console.log(`\u{1F680} Early health server on port ${earlyPort} (DB init in progress)`);
+  });
   console.log("\u{1F4E6} Waiting for database to be ready...");
   await waitForDatabase();
+  // Close early server so main Express server can bind to same port
+  await new Promise((resolve) => earlyHttp.close(resolve));
+  console.log("\u2705 Early health server closed, proceeding with full initialization");
   try {
     const { createOauthCodesTable: createOauthCodesTable2 } = await Promise.resolve().then(() => (init_createOauthCodesTable(), createOauthCodesTable_exports));
     await createOauthCodesTable2();
