@@ -930,8 +930,7 @@ var init_db = __esm({
       max: 5,
       idleTimeoutMillis: 5e3,
       connectionTimeoutMillis: 5e3,
-      statement_timeout: 1e4,
-      ssl: { rejectUnauthorized: false }
+      statement_timeout: 1e4
     });
     db = drizzle(pool, { schema: schema_exports });
   }
