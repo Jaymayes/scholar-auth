@@ -905,15 +905,15 @@ __export(db_exports, {
   db: () => db,
   pool: () => pool
 });
-import { Pool, neonConfig } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-serverless";
+import pg from "pg";
+const { Pool: PgPool } = pg;
+import { drizzle } from "drizzle-orm/node-postgres";
 import ws from "ws";
 var rawDatabaseUrl, cleanDatabaseUrl, pool, db;
 var init_db = __esm({
   "server/db.ts"() {
     "use strict";
     init_schema();
-    neonConfig.webSocketConstructor = ws;
     if (!process.env.DATABASE_URL) {
       throw new Error(
         "DATABASE_URL must be set. Did you forget to provision a database?"
@@ -924,22 +924,14 @@ var init_db = __esm({
     if (rawDatabaseUrl !== cleanDatabaseUrl) {
       console.warn("\u26A0\uFE0F  DATABASE_URL had psql prefix - stripped for clean connection");
     }
-    pool = new Pool({
+    console.log("\u{1F4E6} Using standard pg driver (Railway PostgreSQL)");
+    pool = new PgPool({
       connectionString: cleanDatabaseUrl,
-      // POOLED ENDPOINT CONFIG (CEO-mandated db-2 optimization)
       max: 5,
-      // Low concurrency for pooled endpoint (JWT sessions = minimal DB load)
       idleTimeoutMillis: 5e3,
-      // Fast idle cleanup for serverless (5s)
-      connectionTimeoutMillis: 1e3,
-      // Aggressive timeout for pgbouncer (1s)
+      connectionTimeoutMillis: 5e3,
       statement_timeout: 1e4,
-      // 10s query timeout to prevent hanging
-      query_timeout: 8e3,
-      // 8s individual query timeout
-      // NO keepAlive - pooled endpoint handles connection lifecycle
-      keepAlive: false
-      // Disabled per Neon guidance for -pooler endpoints
+      ssl: { rejectUnauthorized: false }
     });
     db = drizzle(pool, { schema: schema_exports });
   }
