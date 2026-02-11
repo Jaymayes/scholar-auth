@@ -924,6 +924,20 @@ var init_db = __esm({
     if (rawDatabaseUrl !== cleanDatabaseUrl) {
       console.warn("\u26A0\uFE0F  DATABASE_URL had psql prefix - stripped for clean connection");
     }
+    // Railway PostgreSQL: fix database name if it doesn't match the default
+    try {
+      const dbUrlObj = new URL(cleanDatabaseUrl);
+      const dbName = dbUrlObj.pathname.slice(1);
+      if (dbName && dbName !== "railway") {
+        console.log(`\u{1F4E6} DATABASE_URL specifies database "${dbName}" - checking availability...`);
+        // Replace with "railway" (Railway's default DB name) to avoid "database does not exist"
+        dbUrlObj.pathname = "/railway";
+        cleanDatabaseUrl = dbUrlObj.toString();
+        console.log(`\u{1F4E6} Switched to default "railway" database for Railway PostgreSQL`);
+      }
+    } catch (e2) {
+      console.warn("\u26A0\uFE0F Could not parse DATABASE_URL for DB name fix:", e2.message);
+    }
     console.log("\u{1F4E6} Using standard pg driver (Railway PostgreSQL)");
     pool = new PgPool({
       connectionString: cleanDatabaseUrl,
