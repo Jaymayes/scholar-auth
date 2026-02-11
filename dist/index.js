@@ -924,19 +924,26 @@ var init_db = __esm({
     if (rawDatabaseUrl !== cleanDatabaseUrl) {
       console.warn("\u26A0\uFE0F  DATABASE_URL had psql prefix - stripped for clean connection");
     }
-    // Railway PostgreSQL: fix database name if it doesn't match the default
+    // Railway PostgreSQL: fix database name and use internal networking
     try {
       const dbUrlObj = new URL(cleanDatabaseUrl);
       const dbName = dbUrlObj.pathname.slice(1);
       if (dbName && dbName !== "railway") {
-        console.log(`\u{1F4E6} DATABASE_URL specifies database "${dbName}" - checking availability...`);
-        // Replace with "railway" (Railway's default DB name) to avoid "database does not exist"
+        console.log(`\u{1F4E6} DATABASE_URL specifies database "${dbName}" - switching to default "railway"`);
         dbUrlObj.pathname = "/railway";
-        cleanDatabaseUrl = dbUrlObj.toString();
-        console.log(`\u{1F4E6} Switched to default "railway" database for Railway PostgreSQL`);
       }
+      // Switch from public proxy to Railway internal networking if available
+      if ((process.env.RAILWAY_ENVIRONMENT || process.env.RAILWAY_ENVIRONMENT_NAME || process.env.RAILWAY_PROJECT_ID) && dbUrlObj.hostname.includes("proxy.rlwy.net")) {
+        const internalHost = "postgres.railway.internal";
+        const internalPort = "5432";
+        console.log(`\u{1F4E6} Switching from public proxy ${dbUrlObj.hostname}:${dbUrlObj.port} to internal ${internalHost}:${internalPort}`);
+        dbUrlObj.hostname = internalHost;
+        dbUrlObj.port = internalPort;
+      }
+      cleanDatabaseUrl = dbUrlObj.toString();
+      console.log(`\u{1F4E6} Final database URL: ${cleanDatabaseUrl.replace(/:[^:@]+@/, ':****@')}`);
     } catch (e2) {
-      console.warn("\u26A0\uFE0F Could not parse DATABASE_URL for DB name fix:", e2.message);
+      console.warn("\u26A0\uFE0F Could not parse DATABASE_URL for DB fix:", e2.message);
     }
     console.log("\u{1F4E6} Using standard pg driver (Railway PostgreSQL)");
     pool = new PgPool({
@@ -25114,7 +25121,7 @@ var isProduction = process.env.NODE_ENV === "production";
 var distPath = path4.resolve(import.meta.dirname, "..", "dist", "public");
 (async () => {
   // Wait for PostgreSQL to be ready (Railway timing: PG may still be starting)
-  async function waitForDatabase(maxRetries = 10, delayMs = 3000) {
+  async function waitForDatabase(maxRetries = 20, delayMs = 5000) {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
         const testClient = await pool.connect();
