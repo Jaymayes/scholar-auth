@@ -25113,6 +25113,27 @@ app.use((req, res, next) => {
 var isProduction = process.env.NODE_ENV === "production";
 var distPath = path4.resolve(import.meta.dirname, "..", "dist", "public");
 (async () => {
+  // Wait for PostgreSQL to be ready (Railway timing: PG may still be starting)
+  async function waitForDatabase(maxRetries = 10, delayMs = 3000) {
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        const testClient = await pool.connect();
+        await testClient.query("SELECT 1");
+        testClient.release();
+        console.log(`\u2705 Database connection verified (attempt ${attempt}/${maxRetries})`);
+        return;
+      } catch (err) {
+        console.log(`\u23F3 Database not ready (attempt ${attempt}/${maxRetries}): ${err.message}`);
+        if (attempt < maxRetries) {
+          await new Promise(r => setTimeout(r, delayMs));
+        } else {
+          throw new Error(`Database not available after ${maxRetries} attempts: ${err.message}`);
+        }
+      }
+    }
+  }
+  console.log("\u{1F4E6} Waiting for database to be ready...");
+  await waitForDatabase();
   try {
     const { createOauthCodesTable: createOauthCodesTable2 } = await Promise.resolve().then(() => (init_createOauthCodesTable(), createOauthCodesTable_exports));
     await createOauthCodesTable2();
