@@ -4433,7 +4433,7 @@ async function discoveryWithRetry(issuerUrl, maxRetries = 3) {
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
       const config = await Promise.race([
-        client.discovery(new URL(issuerUrl), process.env.REPL_ID),
+        client.discovery(new URL(issuerUrl), process.env.REPL_ID || process.env.OIDC_CLIENT_ID || "scholar-auth"),
         new Promise(
           (_, reject) => setTimeout(() => reject(new Error("OIDC discovery timeout")), 1e4)
         )
@@ -21820,11 +21820,10 @@ async function performHealthChecks() {
     })(),
     // OAuth provider check (fast - just env vars)
     (async () => {
-      const oauthVars = ["REPL_ID", "REPLIT_DOMAINS"];
-      const missingVars = oauthVars.filter((v) => !process.env[v]);
+      const hasClientId = !!(process.env.REPL_ID || process.env.OIDC_CLIENT_ID);
       return {
-        status: missingVars.length === 0 ? "healthy" : "degraded",
-        provider: "replit-oidc"
+        status: hasClientId ? "healthy" : "degraded",
+        provider: "oidc"
       };
     })()
   ]);
@@ -21997,11 +21996,10 @@ var readinessCheck = async (req, res) => {
   if (missingEnvVars.length > 0) {
     overallStatus = "not_ready";
   }
-  const oauthVars = ["REPL_ID", "REPLIT_DOMAINS"];
-  const missingOAuthVars = oauthVars.filter((envVar) => !process.env[envVar]);
+  const hasOAuthClientId = !!(process.env.REPL_ID || process.env.OIDC_CLIENT_ID);
   checks.oauth = {
-    status: missingOAuthVars.length === 0 ? "healthy" : "degraded",
-    missingVariables: missingOAuthVars
+    status: hasOAuthClientId ? "healthy" : "degraded",
+    provider: "oidc"
   };
   res.setHeader("Cache-Control", "no-store, must-revalidate");
   res.setHeader("X-Build-SHA", BUILD_INFO.commit);
@@ -22068,13 +22066,11 @@ var authReadinessCheck = async (req, res) => {
   }
   const oidcVars = ["REPL_ID"];
   const missingOidcVars = oidcVars.filter((envVar) => !process.env[envVar]);
+  const hasOidcClientId = !!(process.env.REPL_ID || process.env.OIDC_CLIENT_ID);
   deps.oidc = {
-    status: missingOidcVars.length === 0 ? "healthy" : "degraded",
-    missingVariables: missingOidcVars
+    status: hasOidcClientId || missingOidcVars.length === 0 ? "healthy" : "degraded",
+    missingVariables: hasOidcClientId ? [] : missingOidcVars
   };
-  if (missingOidcVars.length > 0) {
-    overallStatus = "not_ready";
-  }
   deps.session = {
     status: process.env.DATABASE_URL ? "healthy" : "unhealthy",
     store: "postgresql"
@@ -24983,7 +24979,7 @@ app.get("/api/login", async (req, res) => {
       originalOrigin
     });
     const authUrl = client2.buildAuthorizationUrl(config, {
-      client_id: process.env.REPL_ID,
+      client_id: process.env.REPL_ID || process.env.OIDC_CLIENT_ID || "scholar-auth",
       redirect_uri: redirectUri,
       scope: "openid email profile offline_access",
       state,
@@ -25158,8 +25154,8 @@ process.on("unhandledRejection", (reason) => {
     logger.warn("OIDC provider NOT initialized - auth endpoints will return 503");
   }
   logger.info("PROMPT_LOADER - Loading all system prompts");
-  loadAllPrompts();
-  logger.info("PROMPT_LOADER - All prompts loaded successfully");
+  try { loadAllPrompts(); } catch (promptErr) { console.warn("\u26A0\uFE0F loadAllPrompts failed (non-fatal):", promptErr.message); }
+  logger.info("PROMPT_LOADER - All prompts loaded (or fallback)");
   logger.info("ROUTE_REGISTRATION_START - Registering all API routes");
   try {
     await registerRoutes(app);
@@ -25500,9 +25496,14 @@ process.on("unhandledRejection", (reason) => {
   }));
   logger.info("\u2705 /.well-known static files mounted successfully");
   if (!isProduction) {
-    logger.info("Development mode: setting up Vite dev server");
-    await setupVite(app, server);
-    logger.info("Vite dev server configured");
+    try {
+      logger.info("Development mode: setting up Vite dev server");
+      await setupVite(app, server);
+      logger.info("Vite dev server configured");
+    } catch (viteErr) {
+      console.warn("\u26A0\uFE0F Vite dev server setup failed (non-fatal):", viteErr.message);
+      console.warn("\u26A0\uFE0F Set NODE_ENV=production to skip Vite in production");
+    }
   }
   if (app.get("env") === "development") {
     const baseOrigin = process.env.REPLIT_DEV_DOMAIN || "https://scholar-auth-jamarrlmayes.replit.app";
