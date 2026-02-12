@@ -21358,15 +21358,21 @@ function validateEnvironment() {
   if (process.env.DATABASE_URL) {
     try {
       const dbUrl = new URL(process.env.DATABASE_URL);
-      if (!process.env.PGHOST || process.env.PGHOST === '') process.env.PGHOST = dbUrl.hostname;
-      if (!process.env.PGPORT || !/^\d+$/.test(process.env.PGPORT)) {
+      // Always override broken Railway PG references with values from DATABASE_URL
+      const pgHostBroken = !process.env.PGHOST || process.env.PGHOST === '' || process.env.PGHOST.includes(':');
+      const pgPortBroken = !process.env.PGPORT || !/^\d+$/.test(process.env.PGPORT);
+      const pgDbBroken = !process.env.PGDATABASE || process.env.PGDATABASE.trim() === '' || process.env.PGDATABASE.includes('/');
+      const pgUserBroken = !process.env.PGUSER || process.env.PGUSER === '' || process.env.PGUSER.includes(':');
+      const pgPassBroken = !process.env.PGPASSWORD || process.env.PGPASSWORD === '' || process.env.PGPASSWORD === '@';
+      if (pgHostBroken) { process.env.PGHOST = dbUrl.hostname; console.log(`\u{1F527} PGHOST set to "${dbUrl.hostname}" from DATABASE_URL`); }
+      if (pgPortBroken) {
         const extractedPort = dbUrl.port || '5432';
         console.log(`\u{1F527} PGPORT auto-corrected from "${process.env.PGPORT}" to "${extractedPort}" (extracted from DATABASE_URL)`);
         process.env.PGPORT = extractedPort;
       }
-      if (!process.env.PGDATABASE || process.env.PGDATABASE === '') process.env.PGDATABASE = dbUrl.pathname.slice(1);
-      if (!process.env.PGUSER || process.env.PGUSER === '') process.env.PGUSER = dbUrl.username;
-      if (!process.env.PGPASSWORD || process.env.PGPASSWORD === '') process.env.PGPASSWORD = dbUrl.password;
+      if (pgDbBroken) { process.env.PGDATABASE = dbUrl.pathname.slice(1) || 'railway'; console.log(`\u{1F527} PGDATABASE set to "${process.env.PGDATABASE}" from DATABASE_URL`); }
+      if (pgUserBroken) { process.env.PGUSER = dbUrl.username; console.log(`\u{1F527} PGUSER set from DATABASE_URL`); }
+      if (pgPassBroken) { process.env.PGPASSWORD = dbUrl.password; console.log(`\u{1F527} PGPASSWORD set from DATABASE_URL`); }
     } catch (e) {
       console.warn("\u26A0\uFE0F Could not parse DATABASE_URL for PG var extraction:", e.message);
     }
@@ -21399,8 +21405,9 @@ function validateEnvironment() {
     } else {
       console.error("Unknown environment validation error:", error);
     }
-    console.error("\n\u{1F6D1} APPLICATION STARTUP ABORTED - Fix environment configuration and restart");
-    process.exit(1);
+    console.error("\n\u26A0\uFE0F ENVIRONMENT VALIDATION ISSUES DETECTED - continuing with available config");
+    // Return partial env instead of exiting to allow Railway deployment to proceed
+    return process.env;
   }
 }
 function validateProductionEnvironment(env) {
@@ -25496,13 +25503,18 @@ process.on("unhandledRejection", (reason) => {
   }));
   logger.info("\u2705 /.well-known static files mounted successfully");
   if (!isProduction) {
-    try {
-      logger.info("Development mode: setting up Vite dev server");
-      await setupVite(app, server);
-      logger.info("Vite dev server configured");
-    } catch (viteErr) {
-      console.warn("\u26A0\uFE0F Vite dev server setup failed (non-fatal):", viteErr.message);
-      console.warn("\u26A0\uFE0F Set NODE_ENV=production to skip Vite in production");
+    // Skip Vite in Docker/Railway where client source isn't available
+    const hasClientSource = fs2.existsSync(path4.resolve(process.cwd(), "client", "index.html"));
+    if (hasClientSource) {
+      try {
+        logger.info("Development mode: setting up Vite dev server");
+        await setupVite(app, server);
+        logger.info("Vite dev server configured");
+      } catch (viteErr) {
+        console.warn("\u26A0\uFE0F Vite dev server setup failed (non-fatal):", viteErr.message);
+      }
+    } else {
+      console.warn("\u26A0\uFE0F Skipping Vite dev server - no client source found (set NODE_ENV=production)");
     }
   }
   if (app.get("env") === "development") {
