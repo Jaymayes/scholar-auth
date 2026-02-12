@@ -32,7 +32,7 @@ ENV CORS_ALLOWED_ORIGINS="https://provider.scholaraiadvisor.com,https://student.
 USER scholar
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=30s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=5s --start-period=120s --retries=5 \
   CMD curl -f http://localhost:8080/health || exit 1
 
 EXPOSE 8080

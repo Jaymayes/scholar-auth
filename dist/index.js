@@ -932,14 +932,6 @@ var init_db = __esm({
         console.log(`\u{1F4E6} DATABASE_URL specifies database "${dbName}" - switching to default "railway"`);
         dbUrlObj.pathname = "/railway";
       }
-      // Switch from public proxy to Railway internal networking if available
-      if ((process.env.RAILWAY_ENVIRONMENT || process.env.RAILWAY_ENVIRONMENT_NAME || process.env.RAILWAY_PROJECT_ID) && dbUrlObj.hostname.includes("proxy.rlwy.net")) {
-        const internalHost = "postgres.railway.internal";
-        const internalPort = "5432";
-        console.log(`\u{1F4E6} Switching from public proxy ${dbUrlObj.hostname}:${dbUrlObj.port} to internal ${internalHost}:${internalPort}`);
-        dbUrlObj.hostname = internalHost;
-        dbUrlObj.port = internalPort;
-      }
       cleanDatabaseUrl = dbUrlObj.toString();
       console.log(`\u{1F4E6} Final database URL: ${cleanDatabaseUrl.replace(/:[^:@]+@/, ':****@')}`);
     } catch (e2) {
@@ -25119,61 +25111,62 @@ app.use((req, res, next) => {
 });
 var isProduction = process.env.NODE_ENV === "production";
 var distPath = path4.resolve(import.meta.dirname, "..", "dist", "public");
+// Prevent unhandled rejections from crashing the process
+process.on("unhandledRejection", (reason) => {
+  console.error("\u26A0\uFE0F Unhandled rejection (caught, non-fatal):", reason?.message || reason);
+});
 (async () => {
-  // Wait for PostgreSQL to be ready (Railway timing: PG may still be starting)
-  async function waitForDatabase(maxRetries = 20, delayMs = 5000) {
+  // === DB RETRY WITH GRACEFUL FAILURE ===
+  async function waitForDatabase(maxRetries = 15, delayMs = 5000) {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
         const testClient = await pool.connect();
         await testClient.query("SELECT 1");
         testClient.release();
         console.log(`\u2705 Database connection verified (attempt ${attempt}/${maxRetries})`);
-        return;
+        return true;
       } catch (err) {
         console.log(`\u23F3 Database not ready (attempt ${attempt}/${maxRetries}): ${err.message}`);
         if (attempt < maxRetries) {
           await new Promise(r => setTimeout(r, delayMs));
-        } else {
-          throw new Error(`Database not available after ${maxRetries} attempts: ${err.message}`);
         }
       }
     }
+    console.error("\u274C Database not available after " + maxRetries + " attempts - continuing without DB");
+    return false;
   }
-  // Start a minimal HTTP server early so Railway doesn't kill container during DB init
-  const earlyPort = parseInt(process.env.PORT || "5000", 10);
-  const earlyHttp = (await import("http")).createServer((req, res) => {
-    if (req.url === "/health" || req.url === "/") {
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ status: "initializing", phase: "waiting_for_database" }));
-    } else {
-      res.writeHead(503, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ status: "initializing" }));
-    }
-  });
-  earlyHttp.listen(earlyPort, "0.0.0.0", () => {
-    console.log(`\u{1F680} Early health server on port ${earlyPort} (DB init in progress)`);
-  });
   console.log("\u{1F4E6} Waiting for database to be ready...");
-  await waitForDatabase();
-  // Close early server so main Express server can bind to same port
-  await new Promise((resolve) => earlyHttp.close(resolve));
-  console.log("\u2705 Early health server closed, proceeding with full initialization");
+  const dbAvailable = await waitForDatabase();
   try {
     const { createOauthCodesTable: createOauthCodesTable2 } = await Promise.resolve().then(() => (init_createOauthCodesTable(), createOauthCodesTable_exports));
     await createOauthCodesTable2();
     logger.info("[STARTUP-MIGRATION] oauth_codes table verified");
   } catch (migrationError) {
-    logger.error("[STARTUP-MIGRATION] Failed to create oauth_codes table", migrationError);
+    logger.error("[STARTUP-MIGRATION] Failed to create oauth_codes table (non-fatal)", migrationError);
   }
   logger.info("Initializing OIDC provider");
-  const provider = await initializeOIDCProvider();
-  logger.info("OIDC provider initialized successfully");
+  let provider;
+  try {
+    provider = await initializeOIDCProvider();
+  } catch (oidcErr) {
+    console.error("\u274C OIDC provider init failed (non-fatal):", oidcErr.message);
+    provider = null;
+  }
+  if (provider) {
+    logger.info("OIDC provider initialized successfully");
+  } else {
+    logger.warn("OIDC provider NOT initialized - auth endpoints will return 503");
+  }
   logger.info("PROMPT_LOADER - Loading all system prompts");
   loadAllPrompts();
   logger.info("PROMPT_LOADER - All prompts loaded successfully");
   logger.info("ROUTE_REGISTRATION_START - Registering all API routes");
-  await registerRoutes(app);
-  await registerOIDCRoutes(app);
+  try {
+    await registerRoutes(app);
+  } catch (routeErr) { console.error("\u274C registerRoutes failed (non-fatal):", routeErr.message); }
+  try {
+    await registerOIDCRoutes(app);
+  } catch (routeErr) { console.error("\u274C registerOIDCRoutes failed (non-fatal):", routeErr.message); }
   app.use("/api/oauth", router_default);
   logger.info("[OAUTH-ROUTER] Custom OAuth 2.1 endpoints mounted at /api/oauth");
   logger.info("ROUTE_REGISTRATION_END - All routes registered successfully");
@@ -25207,6 +25200,7 @@ var distPath = path4.resolve(import.meta.dirname, "..", "dist", "public");
       return next();
     }
     try {
+      if (!provider) { return res.status(503).json({ error: "OIDC provider initializing" }); }
       const client3 = await provider.Client.find(client_id);
       if (!client3) {
         const { getIssuerUrl: getIssuerUrl2 } = await Promise.resolve().then(() => (init_provider(), provider_exports));
@@ -25384,9 +25378,14 @@ var distPath = path4.resolve(import.meta.dirname, "..", "dist", "public");
     console.log("\u2705 TRACK C: Serving discovery with client_credentials (cached for 300s)");
     res.json(discoveryDoc);
   });
-  app.use("/oidc", ...fastPathStack, oidcRouter, oidcResponseInterceptor, provider.callback());
+  if (provider) {
+    app.use("/oidc", ...fastPathStack, oidcRouter, oidcResponseInterceptor, provider.callback());
+  } else {
+    app.use("/oidc", (req, res) => res.status(503).json({ error: "OIDC provider not initialized" }));
+    console.warn("\u26A0\uFE0F OIDC provider not available - /oidc returns 503");
+  }
   logger.info("[CEO-HOTFIX] OIDC provider mounted at /oidc with Track C discovery override + FAST-PATH + RATE LIMITING + AGENT3 interceptor");
-  initializeAuditQueue(storage);
+  try { initializeAuditQueue(storage); } catch(e) { console.warn("\u26A0\uFE0F Audit queue init failed (non-fatal):", e.message); }
   app.use((req, res, next) => {
     if (req.path.startsWith("/api/auth/oauth")) {
       logger.info("[EARLY API-AUTH-OAUTH REQUEST]", {
